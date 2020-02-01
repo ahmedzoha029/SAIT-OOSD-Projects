@@ -1,0 +1,55 @@
+
+/* 
+Author:  Rohitashav Aggarwal
+Description: Styling of contact.html page
+Date:  Dec 05, 2019
+COURSE:  CPRG-210-OOSD
+Assignment:  Thread Project - TERM 1
+ */
+
+table,
+    td {
+      border: 1px solid black;
+    }
+
+    body {
+      background-image: url("./images/contactBackground.jpg");
+    }
+
+    .container {
+      background: rgb(0, 0, 0);
+      /* Fallback color */
+      background: rgba(0, 0, 0, 0.5);
+      /* Black background with 0.5 opacity */
+      color: #f1f1f1;
+
+    }
+
+    .table {
+      display: inline-block;
+    }
+
+    .dab {
+      background: rgba(0, 0, 0, 0.3);
+      color: blue;
+    }
+
+    #navBar img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .center {
+      align-self: center;
+      right: -100;
+    }
+
+    .form-control::placeholder,
+    select.form-control {
+      color: white;
+    }
+
+    [type="text"],
+    select.form-control {
+      background-color: rgba(165, 171, 157, 0.2);
+    }

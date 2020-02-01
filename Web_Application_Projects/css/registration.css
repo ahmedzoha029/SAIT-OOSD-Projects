@@ -1,0 +1,124 @@
+/* <
+DATE: Nov 19, 2019
+Author: Bilal Ahmad
+Description: style sheet for registration page
+
+COURSE: CPRG-210-OSD
+ASSIGNMENT: THREAD PROJECT - TERM 1
+*/
+#header {
+  display: flex;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+#logoNameID {
+  align-self: center;
+  font-family: "Courier New", Courier, monospace;
+}
+
+fieldset {
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+legend {
+  color: rgb(22, 6, 2);
+  font-size: 22px;
+  background-color: rgb(112, 128, 144);
+  color: white;
+  text-align: center;
+  padding: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.pageTitle {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.normal {
+  font-variant: normal;
+}
+
+.thick {
+  font-weight: bolder;
+}
+
+.myForm {
+  border-width: 2px;
+}
+
+.padded {
+  padding-left: 20px;
+}
+
+.copyright,
+footer {
+  text-align: center;
+  bottom: -20;
+  background-color: rgba(255, 255, 255, 0);
+  color: azure;
+}
+
+/* apply this css to input fields with the following types */
+[type="text"],
+[type="email"],
+[type="date"],
+[type="number"],
+[type="password"] {
+  background-color: rgba(165, 171, 157, 0.2);
+  color: rgb(255, 255, 255);
+  width: 50%;
+}
+
+.form-control::placeholder {
+  color: white;
+}
+
+div.padded::after {
+  padding: 50px;
+}
+
+[type="radio"] {
+  padding-right: 30px;
+}
+
+.tab-content {
+  color: white;
+  background-color: slate;
+}
+
+#myTab {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#myTab:link {
+  color: white;
+}
+
+#register-tab,
+#login-tab {
+  color: grey;
+}
+
+#register-tab.active {
+  background-color: rgb(112, 128, 144);
+  color: white;
+  border-color: rgb(112, 128, 144);
+}
+
+#login-tab.active {
+  background-color: rgb(112, 128, 144);
+  color: white;
+  border-color: rgb(112, 128, 144);
+}
+
+#myTabs {
+  padding-top: 20px;
+}

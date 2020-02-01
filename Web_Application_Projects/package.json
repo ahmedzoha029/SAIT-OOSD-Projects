@@ -1,0 +1,26 @@
+{
+  "name": "proj-207",
+  "version": "1.0.0",
+  "description": "Travel Website Project",
+  "main": "index.html",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bilal-github/PROJ-207.git"
+  },
+  "author": "Brian,Bilal,Zoha,Rohit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bilal-github/PROJ-207/issues"
+  },
+  "homepage": "https://github.com/bilal-github/PROJ-207#readme",
+  "dependencies": {
+    "alert-node": "^2.0.3",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "node": "^13.1.0",
+    "window-popup": "^1.1.0"
+  }
+}

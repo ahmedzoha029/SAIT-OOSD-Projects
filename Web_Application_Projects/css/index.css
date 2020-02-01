@@ -1,0 +1,99 @@
+/* 
+DATE: Nov 19, 2019
+COURSE: CPRG-210-OSD
+ASSIGNMENT: THREAD PROJECT - TERM 1
+ 
+Author: Brian Appleton
+Description: css for the index page
+*/
+body {
+    margin: 0;
+    background-color: rgb(204, 204, 204);
+}
+
+#navBar img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+#introBtn {
+    /* hide and position button prior to transitioning in and being displayed */
+    margin-top:15rem;
+    transition: opacity 3s, margin-top 3s;
+    opacity: 0;
+    color: cornsilk;
+    font-family: cursive;
+    font-size: 2.5rem;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+#introText {
+     font-family: 'Indie Flower', cursive;
+     margin-top: 0px; 
+     color: teal;
+}
+
+.introTextCol {
+    height: 15rem;
+}
+
+#introImage {
+    width: 100%;
+    min-height: 120%;
+    position: fixed;
+    background-color: antiquewhite;
+}
+
+/* Large Screens - Targetted: Desktops/Laptops */
+@media screen and (min-width: 1024px) {
+    #introText {
+        margin-top: 0rem;
+        font-size: 4.5rem;
+        
+    }
+    #introBtn {
+    font-size: 2.5rem;
+    }
+}
+
+/* Medium Screens  - Targetted: Ipads  */
+@media screen and (max-width: 1024px) {
+    #introText {
+        margin-top: 2rem;
+        font-size: 4.5rem;
+    }
+
+    #introImage {
+        width: 180%;
+        margin-left: -40%;
+    }
+}
+
+/* Small Screens  - Targetted: Phones  */
+@media screen and (max-height: 840px) and (max-width: 420px) {
+    #introText {
+        margin-top: 2rem;
+        font-size: 3rem;
+    }
+    #introBtn {
+        font-size: 1.5rem;
+    }
+    #introImage {
+        width: 300%;
+        margin-left: -100%;
+    }
+}
+
+/* X-Small Screens - Targetted: Phones  */
+@media screen and (max-height: 610px) and (max-width: 420px) {
+    #introText {
+        margin-top: 2rem;
+        font-size: 2rem;
+    }
+
+    #introImage {
+        width: 300%;
+        margin-left: -100%;
+    }
+}

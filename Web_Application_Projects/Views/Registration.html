@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--
+DATE: Nov 19, 2019
+Author: Bilal Ahmad
+Description: takes user details and registers them in and also provides a login panel to log user in.
+
+COURSE: CPRG-210-OSD
+ASSIGNMENT: THREAD PROJECT - TERM 1
+-->
+<html>
+
+
+<head>
+  <!-- page title -->
+  <title>Customer Registration</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap, jquery, and popper imports -->
+  <link rel="stylesheet" href="../Modules/bootstrap.min.css" />
+  <script src="../Modules/jquery.min.js"></script>
+  <script src="../Modules/popper.min.js"></script>
+  <script src="../Modules/bootstrap.min.js"></script>
+
+  <!-- imports navigation bar -->
+  <script src="../js/navBarHTML.js"></script>
+
+  <!-- Imports page specific css -->
+  <link rel="stylesheet" href="../css/registration.css" !important />
+
+  <!-- extra css for this page -->
+  <style>
+    #navBar img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    body {
+      background-image: url("./images/contactBackground.jpg");
+      background-size: 100% cover;
+      background-repeat: no-repeat;
+    }
+  </style>
+  <!-- end of css -->
+</head>
+
+<body>
+
+  <!-- The header and Navigation Bar will be put into the <section tag> by the 
+    Javascript file called navBarHTML.js -->
+
+  <section id="navBar"></section>
+
+  <!-- Tabs start here to hold the registration and login tabs -->
+  <div class="container" id="myTabs">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="register-tab" data-toggle="tab" href="#register" role="tab"
+          aria-controls="register" aria-selected="true">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login"
+          aria-selected="false">Login</a>
+      </li>
+    </ul>
+    <!-- tab content for the two tabs start here -->
+    <div class="tab-content" id="myTabContent">
+      <!-- Registration Tab starts-->
+      <div class="tab-pane fade show active" id="register" role="tabpanel" aria-labelledby="register-tab">
+        <form id="registration_Form" class="myForm" method="POST" action="/post_form">
+          <!--add method="POST" if using bouncer.php-->
+          <fieldset>
+            <!--This fieldset holds the form-->
+            <legend>
+              <!--This is legend for the fieldset-->
+              Registration Form
+            </legend>
+            <!-- all form inputs for registration form -->
+            <div class="padded">
+              <input type="text" class="form-control" placeholder="First Name" name="custFirstName" id="custFirstName"
+                required="required" /><br />
+
+              <input type="text" class="form-control" placeholder="Last Name" name="custLastName" id="custLastName"
+                required="required" /><br />
+
+              <input type="text" class="form-control" placeholder="Address" name="custAddress" id="custAddress"
+                required="required" /><br />
+
+              <input type="text" class="form-control" placeholder="City" name="custCity" id="custCity"
+                required="required" /><br />
+
+              <input type="text" class="form-control" placeholder="Province" name="custProv" id="custProv"
+                required="required" /><br />
+
+              <input type="text"
+                pattern="^[ABCEGHJ-NPRSTVXYabceghj-nprstvxy][0-9][ABCEGHJ-NPRSTV-Zabceghj-nprstv-z] ?[0-9][ABCEGHJ-NPRSTV-Zabceghj-nprstv-z][0-9]$"
+                class="form-control" placeholder="Postal Code" name="custPostal" id="custPostal"
+                required="required" /><br />
+
+              <input type="text" class="form-control" placeholder="Country" name="custCountry" id="custCountry"
+                required="required" /><br />
+
+              <input type="text" class="form-control" placeholder="Home Phone" name="custHomePhone" id="custHomePhone"
+                required="required" /><br />
+
+              <input type="text" class="form-control" placeholder="Business Phone" name="custBusPhone"
+                id="custBusPhone" /><br />
+
+              <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control"
+                name="custEmail" placeholder="Enter your email" id="custEmail" required="required" /><br />
+
+              <input type="text" class="form-control" placeholder="User Name" name="UserName" id="userName"
+                required="required" /><br />
+
+              <input type="password" class="form-control" id="userPassword" minlength="8" placeholder="Password"
+                name="userPassword" required="required" /><br /><br />
+
+              <!-- Checkbox and terms and conditions  -->
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="terms" name="terms" checked="checked" />
+                <label class="custom-control-label" for="terms">
+                  I Agree to the
+                  <a href="TermsAndConditions.html" style="text-decoration:none;
+                      font-weight: bold;"
+                    onclick="window.open('TermsAndConditions.html','newwindow','width = 600, height= 400'); return false;">
+                    Terms and Conditions</a></label>
+              </div>
+              <br /><br />
+
+              <input class="btn btn-primary" style="width: 150px;" type="submit" value="Register" />&nbsp;
+              <input class="btn btn-danger" style="width: 150px;" type="reset" value="Reset" />&nbsp;
+              <!-- clicking this button changes to the login form -->
+              <input type="button" class="btn btn-primary" style="width: 150px;"
+                onclick="$('#login-tab').trigger('click')" value="Login Instead" />
+            </div>
+          </fieldset>
+        </form>
+        <!--Registration form ends-->
+
+      </div>
+      <!-- Registration Tab Ends -->
+
+      <!-- Login Tab Starts -->
+      <div class="tab-pane fade in" id="login" role="tabpanel" aria-labelledby="login-tab">
+        <!-- Login form starts -->
+        <form class="myForm" method="POST" action="/post_loginForm">
+          <fieldset>
+            <legend>
+              Login Form
+            </legend>
+            <!-- Login form inputs -->
+            <div class="padded">
+              <input type="text" class="form-control form-control" placeholder="User Name" name="uNameLogin"
+                id="uNameLogin" required="required" /><br />
+              <input type="password" class="form-control form-control" id="passwordLogin" minlength="8"
+                placeholder="Password" name="passwordLogin" required="required" /><br />
+              <div class="custom-control custom-checkbox">
+                <!-- Checkbox for Remember me (Not funcational at the moment) -->
+                <input type="checkbox" class="custom-control-input" id="rememberMeLogin" name="rememberMe"
+                  checked="checked" />
+                <label class="custom-control-label" for="terms">Remember Me</label>
+              </div>
+              <br />
+
+              <input class="btn btn-primary" style="width: 150px;" type="submit" value="Login" />
+            </div>
+          </fieldset>
+        </form><!--Login Form ends-->
+      </div>
+      <!-- Login Tab ends -->
+    </div>
+
+  </div> <!-- Tabs End here -->
+ 
+
+
+  <!-- Footer Begins -->
+  <footer>
+    <p class="copyright">Copyright &copy; 2019</p>
+  </footer>
+  <!-- Footer Ends -->
+
+
+  <script>
+    // When the page loads, operations:
+    $(document).ready(function () {
+       $("div.padded").append("<p>");//adds and extra <p> to the end of the form elements
+        //Extra one line under the register, reset buttons
+    });
+  </script>
+</body>
+
+</html>

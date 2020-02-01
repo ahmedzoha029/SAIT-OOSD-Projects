@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+
+<!--Zoha Ahmed Code starts-->
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vacation Packages</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../Modules/bootstrap.min.css" />
+    <script src="../Modules/jquery.min.js"></script>
+    <script src="../Modules/popper.min.js"></script>
+    <script src="../Modules/bootstrap.min.js"></script>
+    <script src="../js/navBarHTML.js"></script>
+
+    <!--Css File Link-->
+    <link rel="stylesheet" href="../css/Vacation.css">
+    <script src="../js/RetrieveSQLData.js"></script>
+
+    <script>
+        function swap() {
+            $("#replacement").show();
+            $("#booking_form1").hide();
+
+
+        }
+
+        function myFunction(i) {
+            // alert(i);
+            document.getElementById("PackageName").value = document.getElementById("myTable").rows[i].cells[0].innerHTML;
+            document.getElementById("PackagePrice").value = document.getElementById("myTable").rows[i].cells[1].innerHTML;
+
+
+        }
+
+    </script>
+    <style>
+        #navBar img {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        body {
+            background-image: url("./images/contactBackground.jpg");
+            background-size: cover;
+        }
+
+        #mainPage {
+            background-color: rgb(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        #myTable {
+            color: white;
+        }
+
+        .benefits {
+            background-color: rgb(0, 0, 0, 0.5);
+        }
+    </style>
+
+</head>
+
+<body>
+    <section id="navBar"></section>
+    <p></p>
+    <div class="container" id="mainPage" style="padding-top: 20px;">
+        <!---Container for Whole Body Section starts--->
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3" style="background-color: rgb(0,0,0,0);">
+                <!---Dvision for Left Side Bar Starts--->
+                <div class="container">
+                    <!---Container for Left Side Bar Divison Starts--->
+                    <div class="row align-self-center">
+
+                        <div class="col-12">
+                            <!---Left Side Bar Travel Package Table Section Starts--->
+                            <div class="card w-100 mt-4 ml-2 mb-4 pb-3 ">
+                                <div class="card-header font-weight-bold text-primary font">Travel Packages<span
+                                        class="badge badge-danger badge-pill">Most Popular</span>
+                                </div>
+                                <ul id="mylist" class="list-group text-info font-weight-bold align-self-center mt-2">
+                                </ul>
+                                <script>
+
+                                    getHttpRequest("/packagedata", (data) => {
+                                        var sqldata = JSON.parse(data);
+                                        for (var i = 0; i < sqldata.length; i++) {
+
+                                            var node = document.createElement("LI");
+                                            var textnode = document.createTextNode(sqldata[i].PkgName);
+                                            node.appendChild(textnode);
+                                            document.getElementById("mylist").appendChild(node);
+                                        }
+                                        document.getElementById("mylist").addEventListener("click", function () {
+                                            myFunction();
+                                        });
+
+
+                                    });
+
+                                </script>
+
+                            </div>
+
+                        </div>
+                        <!---Left Side Bar Travel Package Table Section Ends--->
+
+                        <div class="col-12">
+                            <!---Left Side Bar Featured Package Table Section Starts--->
+
+                            <div class="card w-100 mt-4 ml-2 mb-4" style="background-color: #fff;">
+                                <div class="card-header card-header font-weight-bold text-primary">Featured Tour <span
+                                        class="badge badge-danger badge-pill">New</span></div>
+                                <img class="card-img-top img-fluid" src="../images/Featured Tour.jpg">
+                                <div class="card-body">
+                                    <h3 class="card-title text-info font-weight-bold">Paris and Rome</h3>
+                                    <p class="card-text font-weight-bold font-italic text-primary">New Years offer US$
+                                        400 Instant
+                                        Savings</p> <button type="submit"
+                                        class="btn btn-primary ml-4 font-italic">Explore the Tour</button>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!---Left Side Bar Featured Package Table Section Ends--->
+                    </div>
+                </div>
+                <!---Container for Left Side Bar Ends-->
+            </div>
+            <!---Division for Left Side Bar Ends--->
+
+
+            <div class="col-lg-9 col-md-12 col-sm-12 ">
+                <!--Vacation Section Right Half of Page Starts -->
+                <div class="container">
+                    <div class="row">
+                        <!--Vacation Section/Gallery Section-Starts -->
+                        <div class="col-lg-12">
+                            <div class="gallery">
+                                <figure class="gallery__item">
+                                    <img src="../images/Package_1_Pic_1.jpg" alt="Photo of vacation 1"
+                                        class="gallery__photo">
+                                </figure>
+                                <figure class="gallery__item">
+                                    <img src="../images/Package_1_Pic_2.jpg" alt="Photo of vacation 2"
+                                        class="gallery__photo">
+                                </figure>
+                                <figure class="gallery__item">
+                                    <img src="../images/Package_1_Pic_3.jpg" alt="Photo of vacation 3"
+                                        class="gallery__photo">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Vacation Section/Gallery Section-Ends-->
+
+                    <div class="row">
+                        <!--Vacation Section/package Details Section-Starts -->
+                        <div class="col-md-12 col-lg-8 col-sm-12 mb-4">
+                            <div class="container">
+                                <div class="row">
+                                    <!--Vacation Section/Package Heading Section-Starts -->
+                                    <div class="col">
+                                        <div class="h2 text-warning ">Travel Expert Vacation Packages</div>
+                                    </div>
+                                </div>
+                                <!--Vacation Section/Package Heading Section Ends-->
+
+                                <div class="row">
+                                    <!--Vacation Section/Package Description Section-Starts -->
+                                    <div class="col-12">
+                                        <div class="description">
+                                            <p class="paragraph">
+                                                Vacation Packages are one of the best ways to travel hassle-free. With
+                                                seamless planning, arrangements, and transfers being taken care of,
+                                                booking holiday packages is the best way to explore the world’s varied
+                                                landscapes.Grab our all-inclusive Trip packages to a chosen long-desired
+                                                destination, and start packing to be left surprised with unmatchable
+                                                experiences.
+                                            </p>
+                                        </div>
+                                        <div class="col-12">
+
+                                            <table id="myTable" class="table table-responsive table-bordered-rounded ">
+                                                <thead style="text-align: center;">
+                                                    <tr class="text-warning"
+                                                        style="background-color: grey; text-align: center;">
+                                                        <td class="h6">package Name</td>
+                                                        <td class="h6">Package Price (CAD)</td>
+                                                        <td class="h6">Package Description</td>
+                                                        <td class="h6"></td>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+
+                                            <script>
+                                                getHttpRequest("/packagedata", (data) => {
+                                                    var sqldata = JSON.parse(data);
+
+
+                                                    var table = document.getElementById("myTable");
+
+                                                    for (var i = 0; i < sqldata.length; i++) {
+
+                                                        var row = table.insertRow(i + 1);
+                                                        var cell1 = row.insertCell(0);
+                                                        var cell2 = row.insertCell(1);
+                                                        var cell3 = row.insertCell(2);
+                                                        var cell4 = row.insertCell(3);
+
+                                                        cell1.innerHTML = sqldata[i].PkgName;
+                                                        cell2.innerHTML = sqldata[i].PkgBasePrice;
+                                                        cell3.innerHTML = sqldata[i].PkgDesc;
+                                                        var a = parseInt(i) + 1;
+                                                        cell4.innerHTML = "<input type= button class= 'btn btn-danger btn-rounded'  value= Select id= button" + i + " onclick='myFunction(" + a + ")'/>";
+
+
+
+
+                                                    }
+                                                });
+                                            </script>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--Vacation Section/Package Description Section-Ends-->
+
+
+
+                                <div class="row">
+                                    <!--Vacation Section/Package Description Bullets Section-Starts -->
+                                    <div class="col-1">
+
+                                    </div>
+                                    <div class="col-10">
+                                        <ul class="hi">
+                                            <li class="list-group-item font-weight-bold border-0 font-italic benefits">
+                                                Vacation
+                                                Includes:</li>
+                                            <li class="list-group-item text-info font-weight-bold border-0 benefits">
+                                                Private
+                                                ground transportation to and from resort</li>
+                                            <li class="list-group-item text-info font-weight-bold border-0 benefits">
+                                                Accommodations at Hyatt Ziva Cap Cana</li>
+                                            <li class="list-group-item text-info font-weight-bold border-0 benefits">
+                                                Hotel taxes
+                                                and gratuities</li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <!--Vacation Section/Package Description Bullets Section-Ends -->
+
+
+                            </div>
+
+
+                        </div>
+                        <!--Vacation Section/package Details Section-Ends -->
+                        <div class="col-md-12 col-lg-4 sm-12" style="background-color: rgb(0,0,0,0);">
+                            <!--Vacation package /Booking Section Starts-->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <!--Booking Form Column Heading Starts-->
+                                        <div class="h3 text-info font-weight-bold pl-4"
+                                            style="text-decoration: underline;">Booking Form
+                                        </div>
+                                    </div>
+                                    <!--Booking Form Column Heading Ends-->
+                                    <div class="col">
+                                        <!--Booking Form Column Starts-->
+                                        <h4 id="replacement"
+                                            style="text-align: center; background-color: rgb(0,0,0,0);"> Submitted
+                                        </h4>
+                                        <div class="booking_form" id="booking_form1">
+                                            <form method="POST" action="/post_Vacationform" onsubmit="swap()">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control" name="FirstName" required/>
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control" name="LastName" required/>
+                                                <label>Contact Number</label>
+                                                <input type="text" class="form-control" name="PhoneNumber" required/>
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" name="email"
+                                                    required="required"/>
+                                                <label>Package Name</label>
+                                                <input type="text" class="form-control" name="PackageName" required
+                                                    id="PackageName"/>
+                                                <label>package Price</label>
+                                                <input type="text" class="form-control" name="PackagePrice" required
+                                                    id="PackagePrice"/>
+                                                <label>Booking Date</label>
+                                                <input type="date" class="form-control" name="BookingDate" id="date"
+                                                    required/>
+                                                                        <script>
+                                                    let today = new Date().toISOString().substr(0, 10);
+                                                    document.querySelector("#date").value = today;
+
+                                                </script><br>
+                                                <input type="submit" value="Book" class="btn btn-primary pt-2" style="width: 100%"
+                                                     /><br /><br>
+                                                <div class="input-grp">
+                                                    <!-- <button type="submit" class="btn btn-primary"
+                                                        onsubmit="swap()">Book
+                                                        Package</button> -->
+
+
+
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+
+
+                                    </div>
+                                    <!--Booking Form Column Ends-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--Vacation package /Booking Section Ends-->
+                    </div>
+                </div>
+                <!--Vacation Section Right Half of Page Ends -->
+            </div>
+        </div>
+
+    </div>
+    <!---Container for Whole Body Section Ends--->
+    <footer>
+            <p class="copyright">Copyright &copy; 2019</p>
+          </footer>
+</body>
+<script>
+    $(document).ready(function () {
+        $("#replacement").hide();
+
+    });
+
+</script>
+
+</html>
+<!--Zoha Ahmed Codes End-->

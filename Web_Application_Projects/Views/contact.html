@@ -1,0 +1,171 @@
+<!-- 
+Author:  Rohitashav Aggarwal
+Description:  Contact page, send message to the agents, gets the agents contact list from the database.
+              It also provides the company branches locations and contact info.
+Date:  Dec 05, 2019
+COURSE:  CPRG-210-OOSD
+Assignment:  Thread Project - TERM 1
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <!-- Bootstrap import -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Contact Us</title>
+  <!-- Cascading styling sheets import -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../Modules/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="contact.css">
+  <!-- scripts -->
+  <script src="../Modules/jquery.min.js"></script>
+  <script src="../Modules/popper.min.js"></script>
+  <script src="../Modules/bootstrap.min.js"></script>
+  <script src="../js/navBarHTML.js"></script>
+  <script src="selectfromcontact.js"></script>
+  <script src="RetrieveSQLData.js"></script>
+
+  <!-- script begins -->
+  <script>
+
+    // Hiding the thank you message when the page loads
+    $(document).ready(function () {
+      $("#test11").hide();
+    });
+
+    // Gets the Agents list data from node.js server to the HTML document
+    getHttpRequest("/agentsdata", (data) => {
+      var sqldata = JSON.parse(data);
+
+      // create elements inside the loop to display the agents contact list
+      for (var i = 0; i < sqldata.length; i++) {
+        
+        var node = document.createElement("h4");
+        node.setAttribute("class","sourceText fa fa-user");
+        $(node.sourceText).append('<i class="fa fa-user"></i>');
+        var textnode = document.createTextNode(" " + sqldata[i].AgtFirstName + " " + sqldata[i].AgtLastName + " ");
+        node.appendChild(textnode);
+
+        var nodeBr = document.createElement("h6");
+        var textnode1 = document.createTextNode(" " + "Phone: " + sqldata[i].AgtBusPhone + " ");
+        var textnode2 = document.createTextNode(" " + "Email: " + sqldata[i].AgtEmail);
+        nodeBr.appendChild(textnode1);
+        nodeBr.appendChild(textnode2);
+
+        var element = document.getElementById("test");
+        element.appendChild(node);
+        element.appendChild(nodeBr)
+      }
+    });
+
+    // once the message is sent, we switch the visibility to visible of thanks message
+    function swap() {
+      $("#test11").show();
+      $("#form1").hide();
+    }
+  </script>
+  <!-- script ends -->
+  <!-- script begins -->
+  <script>
+    // validates the email id of the user before sending the message
+    function ValidateEmail(inputText) {
+      var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (inputText.value.match(mailformat)) {
+        document.form1.EmailId.focus();
+        swap();
+        return true;
+
+      } else {
+        alert("Invalid email address!");
+        document.form1.EmailId.focus();
+        return false;
+      }
+    }
+  </script>
+  <!-- script ends -->
+</head>
+
+<!-- body section -->
+
+<body onload="document.form1.text1.focus()">
+  <section id="navBar"></section>
+  <!-- keeping the container few pixels away from the navbar -->
+  <div>
+    <br />
+  </div>
+
+  <!-- container begins, contains the form to send the message -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+
+        <form method="POST" class="name1" id="form1" name="form1" action="/send_form"><br />
+
+          <h3 style="color: deepskyblue;">Contact us:</h3>
+          <br />
+
+          <input type="text" class="form-control dab" placeholder="Full Name" name="Full_Name" required /><br />
+
+          <input type="text" class="form-control" placeholder="Email ID" name="EmailId" required /><br />
+
+          <input type="text" class="form-control" placeholder="City" name="City" required /><br />
+
+          <input type="text" class="form-control" placeholder="Phone#" name="Phone" required /><br />
+
+          <select class="form-control" name="Reason">
+            <option value="Select a Reason">Select a Reason</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Payment Issues">Payment Issues</option>
+            <option value="Flight Confirmation">Flight Confirmation</option>
+            <option value="Flight Booking">Flight Booking</option>
+            <option value="Missed Flight">Missed Flight</option>
+            <option value="Insurance">Insurance</option>
+            <option value="Special Assistance">Special Assistance</option>
+            <option value="Other">Other</option>
+          </select><br />
+
+          <input type="submit" value="Send" class="btn btn-success"
+            onclick="return ValidateEmail(document.form1.EmailId)" /><br /><br>
+        </form>
+        <!-- Thank you message, once the send button is clicked -->
+        <h3 id="test11">Thank you. We will contact you within 24 Hours.</h3>
+      </div>
+
+      <!-- Headquarters and Branch Location and Conatact Info -->
+      <div class="col-sm center">
+        <h3>Headquarters:</h3>
+        <a href="https://www.google.ca/maps/place/SAIT/@51.0640303,-114.0907061,17z/data=!3m1!4b1!4m5!3m4!1s0x53716f9268a69e81:0xb1db5e68bd61e28!8m2!3d51.0640269!4d-114.0885174"
+          target="_blank">
+          Address: 1301 16 Ave NW, Calgary, AB T2M 0L4</a>
+        <p>Phone #: 403-999-9999</p>
+        <p>Email Id: travel-experts@gmail.com</p>
+
+        <h3>Okotoks Branch:</h3>
+        <a href="https://www.google.ca/maps/place/SAIT/@51.0640303,-114.0907061,17z/data=!3m1!4b1!4m5!3m4!1s0x53716f9268a69e81:0xb1db5e68bd61e28!8m2!3d51.0640269!4d-114.0885174"
+          target="_blank">
+          Address: 1301 16 Ave NW, Okotoks, AB T2M 0L4</a>
+        <p>Phone #: 403-999-8888</p>
+        <p>Email Id: travel-experts@gmail.com</p>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <!-- Agents contact list -->
+  <div class="container">
+    <h3 style="color: deepskyblue;">Agents Contact List:</h3>
+    <h4 id="test"></h4>
+  </div>
+
+  <!-- Footer begins -->
+  <footer style="text-align: center; color: azure;">
+    <p class="copyright">Copyright &copy; 2019</p>
+  </footer>
+</body>
+
+</html>

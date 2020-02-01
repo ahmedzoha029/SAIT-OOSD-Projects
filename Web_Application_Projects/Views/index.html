@@ -1,0 +1,191 @@
+<!-- 
+DATE: Nov 19, 2019
+COURSE: CPRG-210-OSD
+ASSIGNMENT: THREAD PROJECT - TERM 1
+ 
+Author: Brian Appleton
+Description: The main entry point for the travel website
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Travel Experts | Go Further.
+    </title>
+
+    <!-- Bootstrap Import-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="jquery.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <!-- End Bootstrap -->
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="navBarHTML.js"></script>
+    <script src="TextAnimation.js"></script>
+    <script src="RetrieveSQLData.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- Functions -->
+    <script>
+        //when body is ready, load intro animation
+        $('#body').ready(animatedIntro());
+
+        var packageData;
+        var packageIndex = 0;
+
+
+        //get Package Data from SQL
+        getHttpRequest("/getVacationPackages", (data) => {
+            packageData = JSON.parse(data);
+        });
+
+        //fade in button and package details
+        function fadeInTextTransitions() {
+            //fades in and UP the main button
+            document.getElementById("introBtn").style.opacity = "1.0";
+            document.getElementById("introBtn").style.marginTop = "0rem";
+
+            //fade in and start rotating packages being displayed
+            startPackagesTransitions("introText");
+        }
+
+        //fades in and rotates the packages descriptions
+        function startPackagesTransitions(elementID) {
+            var fadeInInterval = 3500;
+            var fadeOutInterval = fadeInInterval / 2;
+            var transitionInterval = (fadeOutInterval / 1000).toString() + "s";
+
+            document.getElementById(elementID).style.transition = "opacity " + transitionInterval;
+
+            //rotate fading in than out new packages
+            document.getElementById(elementID).style.opacity = "0";
+
+            var startRotatingPackages = setInterval(() => {
+
+                if (packageIndex < packageData.length - 1) {
+                    packageIndex++;
+                } else {
+                    packageIndex = 0;
+                }
+
+                document.getElementById(elementID).style.opacity = "1";
+                document.getElementById(elementID).innerHTML = packageData[packageIndex].PkgDesc;
+
+                var fadeOut = setTimeout(() => {
+                    document.getElementById(elementID).style.opacity = "0";
+                }, fadeOutInterval); // END fadeOut
+
+            }, fadeInInterval); // END startRotatingPackages
+        }
+
+        //creates the introduction animation on page load.
+        function animatedIntro() {
+            var blinkingCursorRunTime = 1700; // default 1700
+            var delayBetweenCharsTyped = 75; //default" 75
+            var delayBetweenSentences = 600; // default 600
+            var sentenceOne = "\"Live life with no excuses,";
+            var sentenceTwo = " travel with no regrets.\""
+            var elementId = "introText";
+
+            //creates blinking cursor effect
+            blinkingCursor(elementId, blinkingCursorRunTime, () => {
+                //then prints the sentenceOne string, 1 charactor at a time
+                textTyping(elementId, sentenceOne, delayBetweenCharsTyped, () => {
+                    //then prints the sentenceTwo, 1 charactor at a time after a short delay between sentence1 & 2. when done make a callback to show the button & packages
+                    setTimeout(() => {
+                        textTyping(elementId, sentenceTwo, delayBetweenCharsTyped,
+                            fadeInTextTransitions);
+                    }, delayBetweenSentences);
+                });
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-md">
+
+                <!-- Background Image -->
+                <img id="introImage" src="contactBackground.jpg"/>
+                <!--Header & Navigation -->
+                <section id="navBar"></section>
+
+            </div>
+        </div>
+
+        <!-- Inspired by: https://codepen.io/natewiley/pen/Ciwyn -->
+        <div id="particle-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <div class="row no-gutters">
+            <div class="col-md text-center introTextCol">
+
+                <!-- Animated Text -->
+                <p class="text-center" id="introText">|</p>
+
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-md text-center">
+
+                <!-- Button -->
+                <a href="vacation.html">
+                    <button type="button" class="btn btn-primary btn-md" id="introBtn">
+                        Start Your Journey
+                    </button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
