@@ -1,0 +1,6 @@
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Read and Write Files\Read and Write Files\bin\Debug\Read and Write Files.exe.config
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Read and Write Files\Read and Write Files\bin\Debug\Read and Write Files.exe
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Read and Write Files\Read and Write Files\bin\Debug\Read and Write Files.pdb
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Read and Write Files\Read and Write Files\obj\Debug\Read and Write Files.csprojAssemblyReference.cache
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Read and Write Files\Read and Write Files\obj\Debug\Read and Write Files.exe
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Read and Write Files\Read and Write Files\obj\Debug\Read and Write Files.pdb

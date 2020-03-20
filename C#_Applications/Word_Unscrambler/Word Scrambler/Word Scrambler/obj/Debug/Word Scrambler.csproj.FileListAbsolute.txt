@@ -1,0 +1,6 @@
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Word Scrambler\Word Scrambler\bin\Debug\Word Scrambler.exe.config
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Word Scrambler\Word Scrambler\bin\Debug\Word Scrambler.exe
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Word Scrambler\Word Scrambler\bin\Debug\Word Scrambler.pdb
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Word Scrambler\Word Scrambler\obj\Debug\Word Scrambler.csprojAssemblyReference.cache
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Word Scrambler\Word Scrambler\obj\Debug\Word Scrambler.exe
+C:\Users\835909\Documents\GitHub\SAIT-OOSD-Projects\C#_Applications\Word_Unscrambler\Word Scrambler\Word Scrambler\obj\Debug\Word Scrambler.pdb
