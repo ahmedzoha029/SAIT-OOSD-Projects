@@ -8,6 +8,11 @@ namespace Word_Scrambler
 {
     class Program
     {
+        private const string wordListFilePath = "Words.txt";
+        private static readonly FileReader fileReader = new FileReader();
+        private static readonly WordMatcher wordMatcher = new WordMatcher();
+
+
         static void Main(string[] args)
         {
             bool continueWordScrambler = true;
@@ -23,9 +28,12 @@ namespace Word_Scrambler
                 {
                     case "F":
                         Console.Write("Please enter path of file for scrambled word");
+                        executeFileScrambler();
                         break;
                     case "M":
                         Console.Write("Please enter scrambled words manually");
+                        executeManualScrambler();
+
                         break;
 
                     default:
@@ -45,7 +53,9 @@ namespace Word_Scrambler
                     wordUnscramblerDecision = Console.ReadLine() ?? string.Empty;
 
 
-                } while (!wordUnscramblerDecision.Equals("Y", StringComparison.OrdinalIgnoreCase)  && !wordUnscramblerDecision.Equals("N", StringComparison.OrdinalIgnoreCase));
+                } while (
+                    !wordUnscramblerDecision.Equals("Y", StringComparison.OrdinalIgnoreCase) && 
+                    !wordUnscramblerDecision.Equals("N", StringComparison.OrdinalIgnoreCase));
 
 
 
@@ -56,6 +66,47 @@ namespace Word_Scrambler
             Console.ReadKey();
             
 
+        }
+
+        private static void executeFileScrambler()
+        {
+            string fileName = (Console.ReadLine() ?? String.Empty);
+
+            string[] inputScrambleWords = fileReader.Read(fileName);
+
+            executeMatchScrambleWords(inputScrambleWords);
+
+        }
+
+        private static void executeManualScrambler()
+        {
+            string words = (Console.ReadLine() ?? string.Empty);
+
+            string[] inputScrambleWords = words.Split(',');
+
+            executeMatchScrambleWords(inputScrambleWords);
+
+
+        }
+
+        private static void executeMatchScrambleWords(string[] inputScrambleWords)
+        {
+            string[] wordList = fileReader.Read(wordListFilePath);
+
+            List<MatchedWord> matchedWords = wordMatcher.Match(inputScrambleWords, wordList);
+
+            if (matchedWords.Any())
+            {
+                foreach(var matchedWord in matchedWords)
+                {
+                    Console.WriteLine("Match Found For {0} : {1}", matchedWord.inputScrambleWord, matchedWord.wordList);
+                }
+            }
+
+            else
+            {
+                Console.WriteLine("No Match Fouund");
+            }
         }
     }
 }
